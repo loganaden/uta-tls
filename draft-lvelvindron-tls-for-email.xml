@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
+<rfc ipr="trust200902" category="std" docName="draft-lvelvindron-tls-for-email-01">
+<?rfc toc="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+<?rfc private=""?>
+<?rfc topblock="yes"?>
+<?rfc comments="no"?>
+<front>
+<title abbrev="TLS For Email ">Use of Transport Layer Security (TLS)
+                    for Email Submission and Access</title>
+
+<author initials="L." surname="Velvindron" fullname="Loganaden Velvindron">
+<organization>cyberstorm.mu</organization>
+<address>
+<postal>
+<street>88 Avenue De Plevitz Roches Brunes</street>
+<city>Rose Hill</city>
+<code>71259</code>
+<country>Mauritius</country>
+</postal>
+<phone>+230 59762817</phone>
+<email>loganaden@gmail.com</email>
+<uri></uri>
+</address>
+</author>
+    <author fullname="Stephen Farrell" initials="S." surname="Farrell">
+      <organization>Trinity College Dublin</organization>
+
+      <address>
+        <postal>
+          <street/>
+
+          <city>Dublin</city>
+
+          <region/>
+
+          <code>2</code>
+
+          <country>Ireland</country>
+        </postal>
+
+        <phone>+353-1-896-2354</phone>
+
+        <email>stephen.farrell@cs.tcd.ie</email>
+      </address>
+    </author>
+
+<date year="2018" month="September" day="21"/>
+
+<area>Internet</area>
+<workgroup></workgroup>
+<keyword></keyword>
+
+
+<abstract>
+<t>This specification updates current recommendation for the use of
+Transport Layer Security (TLS) protocol to provide confidentiality of email
+between a Mail User Agent (MUA) and a Mail Submission Server or Mail Access
+Server. This document updates RFC8314.
+</t>
+</abstract>
+
+
+</front>
+
+<middle>
+
+<section anchor="introduction" title="Introduction">
+<t><xref target="RFC8314"/> defines the minimum recommended for TLS as version 1.1.
+Due to the deprecation of TLS 1.1 in draft-ietf-tls-oldversions-deprecate,
+this recommendation is no longer valid. Therefore this document updates <xref target="RFC8314"/>
+so that the minimum version for TLS is TLS 1.2.
+</t>
+</section>
+
+<section anchor="update" title="Updates to RFC8314">
+<t>
+In the Table of contents section, the text should be revised from:
+ "4.1. Deprecation of Services Using Cleartext and TLS Versions Less Than 1.1"
+to:
+"4.1. Deprecation of Services Using Cleartext and TLS Versions Less Than 1.2"
+</t>
+<t>
+In section 4, the text should be revised from:
+"As soon as practicable, MSPs currently supporting Secure Sockets
+      Layer (SSL) 2.x, SSL 3.0, or TLS 1.0 SHOULD transition their users
+      to TLS 1.1 or later and discontinue support for those earlier
+      versions of SSL and TLS." to:
+"As soon as practicable, MSPs currently supporting Secure Sockets
+      Layer (SSL) 2.x, SSL 3.0, or TLS 1.0 SHOULD transition their users
+      to TLS 1.2 or later and discontinue support for those earlier
+      versions of SSL and TLS."
+</t>
+<t>
+In Section 4.1, the text should be revised from:
+"It is RECOMMENDED that new users be required to use TLS version 1.1
+   or greater from the start.  However, an MSP may find it necessary to
+   make exceptions to accommodate some legacy systems that support only
+   earlier versions of TLS or only cleartext."
+to:
+"It is RECOMMENDED that new users be required to use TLS version 1.2
+   or greater from the start.  However, an MSP may find it necessary to
+   make exceptions to accommodate some legacy systems that support only
+   earlier versions of TLS or only cleartext."
+</t>
+<t>
+In section 5, the text should be revised from:
+"
+MUAs SHOULD provide a prominent indication of the level of
+      confidentiality associated with an account configuration that is
+      appropriate for the user interface (for example, a "lock" icon or
+      changed background color for a visual interface, or some sort of
+      audible indication for an audio user interface), at appropriate
+      times and/or locations, in order to inform the user of the
+      confidentiality of the communications associated with that
+      account.  For example, this might be done whenever (a) the user is
+      prompted for authentication credentials, (b) the user is composing
+      mail that will be sent to a particular submission server, (c) a
+      list of accounts is displayed (particularly if the user can select
+      from that list to read mail), or (d) the user is asking to view or
+      update any configuration data that will be stored on a remote
+      server.  If, however, an MUA provides such an indication, it
+      MUST NOT indicate confidentiality for any connection that does not
+      at least use TLS 1.1 with certificate verification and also meet
+      the minimum confidentiality requirements associated with that
+      account.
+"
+to:
+"
+MUAs SHOULD provide a prominent indication of the level of
+      confidentiality associated with an account configuration that is
+      appropriate for the user interface (for example, a "lock" icon or
+      changed background color for a visual interface, or some sort of
+      audible indication for an audio user interface), at appropriate
+      times and/or locations, in order to inform the user of the
+      confidentiality of the communications associated with that
+      account.  For example, this might be done whenever (a) the user is
+      prompted for authentication credentials, (b) the user is composing
+      mail that will be sent to a particular submission server, (c) a
+      list of accounts is displayed (particularly if the user can select
+      from that list to read mail), or (d) the user is asking to view or
+      update any configuration data that will be stored on a remote
+      server.  If, however, an MUA provides such an indication, it
+      MUST NOT indicate confidentiality for any connection that does not
+      at least use TLS 1.2 with certificate verification and also meet
+      the minimum confidentiality requirements associated with that
+      account.
+"
+</t>
+<t>
+In Section 5 the text should be revised from:
+"
+MUAs MUST implement TLS 1.2 [RFC5246] or later.  Earlier TLS and
+      SSL versions MAY also be supported, so long as the MUA requires at
+      least TLS 1.1 [RFC4346] when accessing accounts that are
+      configured to impose minimum confidentiality requirements.
+"
+to:
+"
+MUAs MUST implement TLS 1.2 [RFC5246] or later.  Earlier TLS and
+      SSL versions MAY also be supported, so long as the MUA requires at
+      least TLS 1.2 [RFC5246] when accessing accounts that are
+      configured to impose minimum confidentiality requirements.
+"
+</t>
+<t>
+In Section 5.2 second paragraph, the text should be revised from:
+"
+   The default minimum expected level of confidentiality for all new
+   accounts MUST require successful validation of the server's
+   certificate and SHOULD require negotiation of TLS version 1.2 or
+   greater.  (Future revisions to this specification may raise these
+   requirements or impose additional requirements to address newly
+   discovered weaknesses in protocols or cryptographic algorithms.
+"
+to:
+"
+   The default minimum expected level of confidentiality for all new
+   accounts MUST require successful validation of the server's
+   certificate and SHOULD require negotiation of TLS version 1.2 or
+   greater.  (Future revisions to this specification may raise these
+   requirements or impose additional requirements to address newly
+   discovered weaknesses in protocols or cryptographic algorithms.
+"
+</t>
+</section>
+
+
+<section anchor="iana-considerations" title="IANA Considerations">
+<t>None of the proposed measures have an impact on IANA.
+</t>
+</section>
+
+<section anchor="security-considerations" title="Security Considerations">
+<t>The purpose of this document is to document updated recommendations
+for using TLS with Email services.
+</t>
+</section>
+
+</middle>
+<back>
+<references title="Normative References">
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8314.xml"?>
+</references>
+
+</back>
+</rfc>
