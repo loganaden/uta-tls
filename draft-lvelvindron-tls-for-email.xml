@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rfc SYSTEM 'rfc2629.dtd' []>
-<rfc ipr="trust200902" category="std" docName="draft-lvelvindron-tls-for-email-01">
+<rfc ipr="trust200902" category="std" updates="8314" docName="draft-lvelvindron-tls-for-email-02">
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 <?rfc sortrefs="yes"?>
@@ -10,7 +10,7 @@
 <?rfc topblock="yes"?>
 <?rfc comments="no"?>
 <front>
-<title abbrev="TLS For Email ">Use of Transport Layer Security (TLS)
+<title abbrev="TLS For Email ">Use of TLS
                     for Email Submission and Access</title>
 
 <author initials="L." surname="Velvindron" fullname="Loganaden Velvindron">
@@ -49,7 +49,7 @@
       </address>
     </author>
 
-<date year="2018" month="September" day="21"/>
+<date year="2018" month="October" day="15"/>
 
 <area>Internet</area>
 <workgroup></workgroup>
@@ -70,105 +70,98 @@ Server. This document updates RFC8314.
 <middle>
 
 <section anchor="introduction" title="Introduction">
-<t><xref target="RFC8314"/> defines the minimum recommended for TLS as version 1.1.
-Due to the deprecation of TLS 1.1 in draft-ietf-tls-oldversions-deprecate,
+<t><xref target="RFC8314"/> defines the minimum recommended version for  TLS as version 1.1.
+Due to the deprecation of TLS 1.1 in <xref target="I-D.ietf-tls-oldversions-deprecate"></xref>,
 this recommendation is no longer valid. Therefore this document updates <xref target="RFC8314"/>
 so that the minimum version for TLS is TLS 1.2.
 </t>
 </section>
 
+<section title="Conventions Used in This Document">
+	<t>
+	  The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+	  "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+	  document are to be interpreted as described in <xref target="RFC2119"/> when they
+	  appear in ALL CAPS.  These words may also appear in this document in
+	  lower case as plain English words, absent their normative meanings.
+	</t>
+</section>
+
 <section anchor="update" title="Updates to RFC8314">
-<t>
-In the Table of contents section, the text should be revised from:
- "4.1. Deprecation of Services Using Cleartext and TLS Versions Less Than 1.1"
-to:
-"4.1. Deprecation of Services Using Cleartext and TLS Versions Less Than 1.2"
+<t>OLD: </t>
+ <t>"4.1. Deprecation of Services Using Cleartext and TLS Versions Less Than 1.1"</t>
+<t>NEW:</t>
+<t>"4.1. Deprecation of Services Using Cleartext and TLS Versions Less Than 1.2"
 </t>
+<t>OLD</t>
 <t>
-In section 4, the text should be revised from:
 "As soon as practicable, MSPs currently supporting Secure Sockets
       Layer (SSL) 2.x, SSL 3.0, or TLS 1.0 SHOULD transition their users
       to TLS 1.1 or later and discontinue support for those earlier
-      versions of SSL and TLS." to:
+      versions of SSL and TLS."
+</t>
+ <t>NEW:</t>
+<t>
 "As soon as practicable, MSPs currently supporting Secure Sockets
       Layer (SSL) 2.x, SSL 3.0, or TLS 1.0 SHOULD transition their users
       to TLS 1.2 or later and discontinue support for those earlier
       versions of SSL and TLS."
 </t>
+<t> OLD:</t>
 <t>
 In Section 4.1, the text should be revised from:
 "It is RECOMMENDED that new users be required to use TLS version 1.1
    or greater from the start.  However, an MSP may find it necessary to
    make exceptions to accommodate some legacy systems that support only
    earlier versions of TLS or only cleartext."
-to:
+</t>
+<t>NEW:</t>
+<t>
 "It is RECOMMENDED that new users be required to use TLS version 1.2
    or greater from the start.  However, an MSP may find it necessary to
    make exceptions to accommodate some legacy systems that support only
    earlier versions of TLS or only cleartext."
 </t>
+<t>OLD:</t>
 <t>
-In section 5, the text should be revised from:
 "
-MUAs SHOULD provide a prominent indication of the level of
-      confidentiality associated with an account configuration that is
-      appropriate for the user interface (for example, a "lock" icon or
-      changed background color for a visual interface, or some sort of
-      audible indication for an audio user interface), at appropriate
-      times and/or locations, in order to inform the user of the
-      confidentiality of the communications associated with that
-      account.  For example, this might be done whenever (a) the user is
-      prompted for authentication credentials, (b) the user is composing
-      mail that will be sent to a particular submission server, (c) a
-      list of accounts is displayed (particularly if the user can select
-      from that list to read mail), or (d) the user is asking to view or
-      update any configuration data that will be stored on a remote
-      server.  If, however, an MUA provides such an indication, it
+ If, however, an MUA provides such an indication, it
       MUST NOT indicate confidentiality for any connection that does not
       at least use TLS 1.1 with certificate verification and also meet
       the minimum confidentiality requirements associated with that
       account.
 "
-to:
+</t>
+<t>NEW:</t>
+<t>
 "
-MUAs SHOULD provide a prominent indication of the level of
-      confidentiality associated with an account configuration that is
-      appropriate for the user interface (for example, a "lock" icon or
-      changed background color for a visual interface, or some sort of
-      audible indication for an audio user interface), at appropriate
-      times and/or locations, in order to inform the user of the
-      confidentiality of the communications associated with that
-      account.  For example, this might be done whenever (a) the user is
-      prompted for authentication credentials, (b) the user is composing
-      mail that will be sent to a particular submission server, (c) a
-      list of accounts is displayed (particularly if the user can select
-      from that list to read mail), or (d) the user is asking to view or
-      update any configuration data that will be stored on a remote
-      server.  If, however, an MUA provides such an indication, it
+ If, however, an MUA provides such an indication, it
       MUST NOT indicate confidentiality for any connection that does not
       at least use TLS 1.2 with certificate verification and also meet
       the minimum confidentiality requirements associated with that
       account.
 "
 </t>
+<t>OLD</t>
 <t>
-In Section 5 the text should be revised from:
 "
-MUAs MUST implement TLS 1.2 [RFC5246] or later.  Earlier TLS and
+MUAs MUST implement TLS 1.2 <xref target="RFC5246"/> or later.  Earlier TLS and
       SSL versions MAY also be supported, so long as the MUA requires at
-      least TLS 1.1 [RFC4346] when accessing accounts that are
-      configured to impose minimum confidentiality requirements.
-"
-to:
-"
-MUAs MUST implement TLS 1.2 [RFC5246] or later.  Earlier TLS and
-      SSL versions MAY also be supported, so long as the MUA requires at
-      least TLS 1.2 [RFC5246] when accessing accounts that are
+      least TLS 1.1  <xref target="RFC4346"/> when accessing accounts that are
       configured to impose minimum confidentiality requirements.
 "
 </t>
+<t>NEW:</t>
 <t>
-In Section 5.2 second paragraph, the text should be revised from:
+"
+MUAs MUST implement TLS 1.2  <xref target="RFC5246"/> or later e.g TLS 1.3  <xref target="RFC8446"/>.  Earlier TLS and
+      SSL versions MAY also be supported, so long as the MUA requires at
+      least TLS 1.2  <xref target="RFC5246"/> when accessing accounts that are
+      configured to impose minimum confidentiality requirements.
+"
+</t>
+<t>OLD:</t>
+<t>
 "
    The default minimum expected level of confidentiality for all new
    accounts MUST require successful validation of the server's
@@ -177,7 +170,9 @@ In Section 5.2 second paragraph, the text should be revised from:
    requirements or impose additional requirements to address newly
    discovered weaknesses in protocols or cryptographic algorithms.
 "
-to:
+</t>
+<t>NEW:</t>
+<t>
 "
    The default minimum expected level of confidentiality for all new
    accounts MUST require successful validation of the server's
@@ -197,14 +192,22 @@ to:
 
 <section anchor="security-considerations" title="Security Considerations">
 <t>The purpose of this document is to document updated recommendations
-for using TLS with Email services.
+for using TLS with Email services. Those recommendations are based on 
+<xref target="I-D.ietf-tls-oldversions-deprecate"></xref>.
 </t>
 </section>
 
 </middle>
 <back>
+<references title="Informative References">
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.4346.xml"?>
+</references>
 <references title="Normative References">
 <?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8314.xml"?>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"?>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.8446.xml"?>
+<?rfc include="http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5246.xml"?>
+<?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml-ids/reference.I-D.ietf-tls-oldversions-deprecate.xml"?>
 </references>
 
 </back>
